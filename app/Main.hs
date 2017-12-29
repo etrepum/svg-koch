@@ -1,11 +1,25 @@
+{-# LANGUAGE FlexibleInstances         #-}
+{-# LANGUAGE NoMonomorphismRestriction #-}
+{-# LANGUAGE TypeFamilies              #-}
+
 module Main where
 
-import Diagrams.Prelude (Diagram, strokeLoop)
-import Diagrams.Backend.SVG.CmdLine (B, mainWith)
+import Data.Colour.Palette.ColorSet
+import Diagrams.Backend.SVG.CmdLine
+import Diagrams.Prelude
 import Lib (koch)
 
-example :: Diagram B
-example = strokeLoop (koch 4)
+kochWidth :: Int -> Double
+kochWidth n = 3 ^ (n - 1)
+
+kochScale :: Int -> Double
+kochScale n = (0.7 ^ (n - 2)) * (1 / kochWidth n)
+
+kochLoop :: Int -> Diagram B
+kochLoop n = lc (d3Colors1 n) . scale (kochScale n) . center . strokeLoop $ koch n
+
+example :: Int -> Diagram B
+example n = mconcat (map kochLoop [2..n])
 
 main :: IO ()
 main = mainWith example

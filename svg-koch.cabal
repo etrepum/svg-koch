@@ -50,6 +50,7 @@ executable svg-koch-exe
     , diagrams
     , diagrams-lib
     , diagrams-svg
+    , palette
   other-modules:
       Paths_svg_koch
   default-language: Haskell2010
