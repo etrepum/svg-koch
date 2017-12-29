@@ -33,7 +33,6 @@ library
       base >=4.7 && <5
     , diagrams
     , diagrams-lib
-    , diagrams-svg
   exposed-modules:
       Lib
   other-modules:
@@ -48,6 +47,8 @@ executable svg-koch-exe
   build-depends:
       base >=4.7 && <5
     , svg-koch
+    , diagrams
+    , diagrams-lib
     , diagrams-svg
   other-modules:
       Paths_svg_koch
