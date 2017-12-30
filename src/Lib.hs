@@ -2,9 +2,19 @@ module Lib
     ( kochExample
     ) where
 
-import Data.Colour.Palette.ColorSet
-import Diagrams.Backend.SVG.CmdLine
+import Options.Applicative (Parser(..), argument, auto, metavar)
+import Data.Colour.Palette.ColorSet (d3Colors1)
+import Diagrams.Backend.CmdLine (Parseable(..))
+import Diagrams.Backend.SVG.CmdLine (B)
 import Diagrams.Prelude
+
+data KochOpts = KochOpts { kochIterations :: Int }
+
+instance Parseable KochOpts where
+    parser = kochOpts
+
+kochOpts :: Parser KochOpts
+kochOpts = KochOpts <$> argument auto (metavar "ITERATIONS")
 
 koch :: Int -> Trail' Loop V2 Double
 koch n = glueLine . mconcat . iterateN 3 (rotateBy (-1/3)) $ kochSegment n
@@ -31,5 +41,5 @@ kochScale n = (0.7 ^ (n - 2)) * (1 / kochWidth n)
 kochLoop :: Int -> Diagram B
 kochLoop n = lc (d3Colors1 n) . scale (kochScale n) . center . strokeLoop $ koch n
 
-kochExample :: Int -> Diagram B
-kochExample n = mconcat (map kochLoop [2..n])
+kochExample :: KochOpts -> Diagram B
+kochExample opts = mconcat (map kochLoop [2..kochIterations opts])

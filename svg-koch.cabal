@@ -1,18 +1,12 @@
--- This file has been generated from package.yaml by hpack version 0.20.0.
---
--- see: https://github.com/sol/hpack
---
--- hash: d29ab2ecc891d365648446730f893ee8347d5128243d7d106c1d5985c5d4dc2d
-
 name:           svg-koch
 version:        0.1.0.0
 synopsis:       Short description of your package
-description:    Please see the README on Github at <https://github.com/githubuser/svg-koch#readme>
-homepage:       https://github.com/githubuser/svg-koch#readme
-bug-reports:    https://github.com/githubuser/svg-koch/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2017 Author name here
+description:    Please see the README on Github at <https://github.com/etrepum/svg-koch#readme>
+homepage:       https://github.com/etrepum/svg-koch#readme
+bug-reports:    https://github.com/etrepum/svg-koch/issues
+author:         Bob Ippolito
+maintainer:     bob@redivi.com
+copyright:      2017 Bob Ippolito
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
@@ -24,7 +18,7 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/svg-koch
+  location: https://github.com/etrepum/svg-koch
 
 library
   hs-source-dirs:
@@ -35,6 +29,7 @@ library
     , diagrams-lib
     , diagrams-svg
     , palette
+    , optparse-applicative
   exposed-modules:
       Lib
   other-modules:
