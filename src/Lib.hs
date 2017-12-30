@@ -2,11 +2,11 @@ module Lib
     ( kochExample
     ) where
 
-import Options.Applicative (Parser(..), argument, auto, metavar)
-import Data.Colour.Palette.ColorSet (d3Colors1)
-import Diagrams.Backend.CmdLine (Parseable(..))
-import Diagrams.Backend.SVG.CmdLine (B)
-import Diagrams.Prelude
+import           Data.Colour.Palette.ColorSet (d3Colors1)
+import           Diagrams.Backend.CmdLine     (Parseable (..))
+import           Diagrams.Backend.SVG.CmdLine (B)
+import           Diagrams.Prelude
+import           Options.Applicative          (Parser, argument, auto, metavar)
 
 data KochOpts = KochOpts { kochIterations :: Int }
 
